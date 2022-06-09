@@ -21,12 +21,12 @@ public:
         int till;
         
         if(ctr%2 == 1){
-            till = (ctr+1)/2;
+            till = (ctr+1)/2 - 1;
         }else{
-            till = ctr/2 + 1;
+            till = ctr/2 ;
         }
         
-        till--;
+    
         ListNode* temp1 = head;
         while(till){
             temp1 = temp1->next;
