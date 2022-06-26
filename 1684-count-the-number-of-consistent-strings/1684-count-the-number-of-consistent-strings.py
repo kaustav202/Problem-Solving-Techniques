@@ -3,9 +3,7 @@ class Solution:
         c=0
         for x in words:
             for y in x:
-                if y in allowed:
-                    continue
-                else:
+                if y not in allowed:
                     break
             else:
                 c+=1
