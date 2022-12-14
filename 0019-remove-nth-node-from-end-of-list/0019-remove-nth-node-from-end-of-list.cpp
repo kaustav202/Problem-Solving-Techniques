@@ -26,8 +26,18 @@ public:
 
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         
-        ListNode* marked;
-        head  = solve(head, n, marked);
-        return head == marked ? head->next : head;
+        // ListNode* marked;
+        // head  = solve(head, n, marked);
+        // return head == marked ? head->next : head;
+        ListNode * first = head;
+        ListNode * second = head;
+        while(n--) first = first->next;
+        if(!first) return head->next;
+        while(first->next){
+            first = first->next;
+            second = second->next;
+        }
+        second->next = second->next->next;
+        return head;
     }
 };
