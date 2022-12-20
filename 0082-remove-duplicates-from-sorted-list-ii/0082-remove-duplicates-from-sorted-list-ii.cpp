@@ -32,7 +32,6 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
         int marked = INT_MIN;
        ListNode* ans = solve(head, marked);
-        cout<< marked;
         if(ans){
             ans = ans->val == marked? ans->next : ans;
         }
