@@ -15,9 +15,10 @@ class Solution {
 public:
     
     ListNode* solve(ListNode* &head, int &marked){
-        if(!head) return head;
+        
+        if(!head || !head->next) return head;
         head->next = solve(head->next, marked);
-        if(head->next){
+
             if(head->val == head->next->val){
                 marked = head->val;
                 return head->next;
@@ -25,7 +26,7 @@ public:
             if(head->next->val == marked){
                 head->next = head->next->next;
             }
-        }
+        
         return head;
     }
     
