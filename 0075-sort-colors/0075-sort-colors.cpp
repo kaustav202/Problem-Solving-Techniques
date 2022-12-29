@@ -6,13 +6,16 @@ public:
         while(mid <= high){
             
             if(nums[mid] == 0){
+                // Swap with low ( sure to be 1) and move mid & low
                 tmp = nums[low];
                 nums[low] = nums[mid];
                 nums[mid] = tmp;
                 low++;
                 mid++;
             }
+            // Just move mid
             else if(nums[mid] == 1) mid++;
+            // Swap with high and just move high
             else{
                 tmp = nums[high];
                 nums[high] = nums[mid];
