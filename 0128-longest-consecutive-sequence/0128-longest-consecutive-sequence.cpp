@@ -1,14 +1,28 @@
-class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
-        nums.sort()
-        max_con = 1
-        curr = 1
-        for i in range(1,len(nums)):
-            if nums[i] == nums[i-1] + 1:
-                curr+=1
-            elif nums[i] != nums[i-1]:
-                curr = 1
-            max_con = curr if curr > max_con else max_con
-        return max_con
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if(nums.size() == 0) return 0;
+        unordered_map<int,int> m;
+        
+        for(auto i : nums) m[i] = 1;
+        
+        for(auto i:nums){
+            if(m.find(i-1) != m.end()) m[i] = 0;
+        }
+        
+        int max_len = 1;
+        
+        for (auto i:nums){
+            int curr = 1;
+            if( m[i]!= 0){
+                while(m.find(i+1) != m.end()){
+                    i++;
+                    curr++;
+                }
+                max_len = curr>max_len ? curr : max_len;
+            }
+        }
+        
+        return max_len;
+    }
+};
